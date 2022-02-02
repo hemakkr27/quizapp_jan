@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:testing/model/Questions.dart';
+import 'package:testing/screens/quiz/quiz_screen.dart';
 
 //import 'package:get/state_manager.dart';
 // import 'package:quiz_app/models/Questions.dart';
@@ -15,7 +16,7 @@ class QuestionController extends GetxController
   AnimationController? _animationController;
   Animation? _animation;
   // so that we can access our animation outside
-  Animation? get animation => _animation;
+  Animation? get animation => this._animation;
 
   // final List<Question> _questions = sample_data
   //     .map(
@@ -43,12 +44,8 @@ class QuestionController extends GetxController
 
         update();
       });
-
-    // start our animation
-    // Once 60s is completed go to the next qn
     _animationController!.forward();
-
-    super.onInit();
+    // start our animation
   }
 
   // // called just before the Controller is deleted from memory
@@ -56,5 +53,20 @@ class QuestionController extends GetxController
   void onClose() {
     super.onClose();
     _animationController!.dispose();
+  }
+
+  void stopPrograss() {
+    // because once user press any option then it will run
+    // It will stop the counter
+    _animationController!.stop();
+    update();
+  }
+
+  void ResetPrograss() {
+    // because once user press any option then it will run
+    // It will stop the counter
+    _animationController!.reset();
+    _animationController!.forward();
+    update();
   }
 }

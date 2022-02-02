@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testing/controllers/question_controller.dart';
 import 'package:testing/model/QuestionModel.dart';
-import 'package:testing/model/Questions.dart';
+//import 'package:testing/model/Questions.dart';
+
 import 'package:testing/screens/score/score_screen.dart';
 // import 'package:quiz_app/constants.dart';
 // import 'package:quiz_app/controllers/question_controller.dart';
 
 import '../../constants.dart';
 import 'components/progress_bar.dart';
-import 'components/question_card.dart';
+
 import 'package:http/http.dart' as http;
 
 class QuizScreen extends StatelessWidget {
@@ -27,19 +28,19 @@ class QuizScreen extends StatelessWidget {
           FlatButton(onPressed: () {}, child: Text("Skip")),
         ],
       ),
-      body: Body(),
+      body: const QuestionBody(),
     );
   }
 }
 
-class Body extends StatefulWidget {
+class QuestionBody extends StatefulWidget {
+  const QuestionBody({Key? key}) : super(key: key);
+
   @override
-  State<Body> createState() => _BodyState();
+  State<QuestionBody> createState() => _BodyState();
 }
 
-class _BodyState extends State<Body> {
-  AnimationController? _animationController;
-  Animation? _animation;
+class _BodyState extends State<QuestionBody> {
   late List<QuestinModel> _questions;
 
   int index = 0;
@@ -74,11 +75,11 @@ class _BodyState extends State<Body> {
   Color wrong = Colors.red;
 
   // ignore: missing_return
-
+  QuestionController _questionController = Get.put(QuestionController());
   @override
   Widget build(BuildContext context) {
     // So that we have acccess our controller
-    QuestionController _questionController = Get.put(QuestionController());
+
     return Stack(
       children: [
         Image.asset(
@@ -97,18 +98,18 @@ class _BodyState extends State<Body> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ProgressBar(),
+                        const ProgressBar(),
                         const SizedBox(height: kDefaultPadding),
                         Text.rich(
                           TextSpan(
-                            text: "Question 1",
+                            text: "Question ${index + 1}",
                             style: Theme.of(context)
                                 .textTheme
                                 .headline4
                                 ?.copyWith(color: kSecondaryColor),
                             children: [
                               TextSpan(
-                                text: "/10",
+                                text: "/${_questions.length.toString()}",
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline5
@@ -127,6 +128,7 @@ class _BodyState extends State<Body> {
                               borderRadius: BorderRadius.circular(15)),
                           child: Column(
                             children: [
+                              //  Image.asset("assets/bhagvt.jpg", ),
                               Text(
                                 _questions[index].question,
                                 style: Theme.of(context)
@@ -170,6 +172,7 @@ class _BodyState extends State<Body> {
   Color getTheRightColor(int index) {
     {
       if (index == _correctAns && qoptionindex != 0) {
+        // _correctAns++;
         return kGreenColor;
       } else if (index == qoptionindex && index != _correctAns) {
         return kRedColor;
@@ -182,7 +185,7 @@ class _BodyState extends State<Body> {
     return getTheRightColor(index) == kRedColor ? Icons.close : Icons.done;
   }
 
-  checkAns(int selectedIndex) {
+  void checkAns(int selectedIndex) {
     // because once user press any option then it will run
 
     if (_questions[index].opt1 == _questions[index].ans) {
@@ -199,16 +202,20 @@ class _BodyState extends State<Body> {
     }
 
     // It will stop the counter
+    _questionController.stopPrograss();
     //_animationController!.stop();
     setState(() {});
     // Once user select an ans after 3s it will go to the next qn
     Future.delayed(const Duration(seconds: 2), () {
-      // _animationController!.reset();
+      _questionController.ResetPrograss();
 
       setState(() {
         if (index == _questions.length - 1) {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => ScoreScreen()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ScoreScreen(
+                      _questions.length.toString(), _correctAns.toString())));
         } else {
           index = index + 1;
           qoptionindex = 0;

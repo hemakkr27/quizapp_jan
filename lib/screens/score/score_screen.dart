@@ -7,6 +7,9 @@ import '../../constants.dart';
 // import 'package:quiz_app/controllers/question_controller.dart';
 
 class ScoreScreen extends StatelessWidget {
+  String totalqueston;
+  String score;
+  ScoreScreen(this.totalqueston, this.score);
   @override
   Widget build(BuildContext context) {
     QuestionController _qnController = Get.put(QuestionController());
@@ -33,7 +36,8 @@ class ScoreScreen extends StatelessWidget {
               const Spacer(),
               Text(
                 // "${_qnController.numOfCorrectAns}/${_qnController.questions.length}",
-                "${1 / 10}",
+                // "/${_questions.length.toString()}",
+                "${score}/${totalqueston}",
                 style: Theme.of(context)
                     .textTheme
                     .headline4
@@ -47,3 +51,6 @@ class ScoreScreen extends StatelessWidget {
     );
   }
 }
+
+//flutter doctor -v
+//flutter run --enable-software-rendering
