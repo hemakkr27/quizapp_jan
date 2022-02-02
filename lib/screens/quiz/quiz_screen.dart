@@ -16,6 +16,9 @@ import 'components/progress_bar.dart';
 import 'package:http/http.dart' as http;
 
 class QuizScreen extends StatelessWidget {
+  String id;
+  QuizScreen(this.id);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +31,14 @@ class QuizScreen extends StatelessWidget {
           FlatButton(onPressed: () {}, child: Text("Skip")),
         ],
       ),
-      body: const QuestionBody(),
+      body: QuestionBody(id),
     );
   }
 }
 
 class QuestionBody extends StatefulWidget {
-  const QuestionBody({Key? key}) : super(key: key);
-
+  String id;
+  QuestionBody(this.id);
   @override
   State<QuestionBody> createState() => _BodyState();
 }
@@ -46,6 +49,7 @@ class _BodyState extends State<QuestionBody> {
   int index = 0;
   int qoptionindex = 0;
   int _correctAns = 0;
+  int _numcorrect = 0;
 
   Future<List<QuestinModel>> getdata() async {
     var response = await http.get(Uri.parse(
@@ -59,6 +63,10 @@ class _BodyState extends State<QuestionBody> {
       _questions = parsed
           .map<QuestinModel>((json) => QuestinModel.fromJson(json))
           .toList();
+      if (widget.id != "null") {
+        _questions =
+            _questions.where((element) => element.qtype == widget.id).toList();
+      }
       return _questions;
     } else {
       // If that call was not successful (response was unexpected), it throw an error.
@@ -172,7 +180,6 @@ class _BodyState extends State<QuestionBody> {
   Color getTheRightColor(int index) {
     {
       if (index == _correctAns && qoptionindex != 0) {
-        // _correctAns++;
         return kGreenColor;
       } else if (index == qoptionindex && index != _correctAns) {
         return kRedColor;
@@ -201,6 +208,10 @@ class _BodyState extends State<QuestionBody> {
       _correctAns = 4;
     }
 
+    if (selectedIndex == _correctAns) {
+      _numcorrect = _numcorrect + 1;
+    }
+
     // It will stop the counter
     _questionController.stopPrograss();
     //_animationController!.stop();
@@ -215,7 +226,7 @@ class _BodyState extends State<QuestionBody> {
               context,
               MaterialPageRoute(
                   builder: (context) => ScoreScreen(
-                      _questions.length.toString(), _correctAns.toString())));
+                      _questions.length.toString(), _numcorrect.toString())));
         } else {
           index = index + 1;
           qoptionindex = 0;
@@ -242,6 +253,11 @@ class _BodyState extends State<QuestionBody> {
   // IconData getTheRightIcon() {
   //   return getTheRightColor() == kRedColor ? Icons.close : Icons.done;
   // }
+  void changeQueston() {
+    setState(() {
+      index = index + 1;
+    });
+  }
 
   Widget Optons(int optionindex, String option) {
     return SingleChildScrollView(

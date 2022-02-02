@@ -4,6 +4,9 @@ import 'package:testing/screens/quiz/quiz_screen.dart';
 import '../../constants.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  String id;
+  WelcomeScreen(this.id);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +48,7 @@ class WelcomeScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => QuizScreen()));
+                              builder: (context) => QuizScreen(id)));
                     },
                     child: Container(
                       width: double.infinity,
