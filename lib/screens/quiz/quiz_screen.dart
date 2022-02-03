@@ -27,8 +27,15 @@ class QuizScreen extends StatelessWidget {
         // Fluttter show the back button automatically
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: [
-          FlatButton(onPressed: () {}, child: Text("Skip")),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 20),
+            child: Center(
+                child: Text(
+              "QuizApp",
+              style: TextStyle(),
+            )),
+          ),
         ],
       ),
       body: QuestionBody(id),
@@ -108,23 +115,38 @@ class _BodyState extends State<QuestionBody> {
                       children: [
                         const ProgressBar(),
                         const SizedBox(height: kDefaultPadding),
-                        Text.rich(
-                          TextSpan(
-                            text: "Question ${index + 1}",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline4
-                                ?.copyWith(color: kSecondaryColor),
-                            children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text.rich(
                               TextSpan(
-                                text: "/${_questions.length.toString()}",
+                                text: "Question ${index + 1}",
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline5
+                                    .headline4
                                     ?.copyWith(color: kSecondaryColor),
+                                children: [
+                                  TextSpan(
+                                    text: "/${_questions.length.toString()}",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline5
+                                        ?.copyWith(color: kSecondaryColor),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                            GestureDetector(
+                              child: const Text(
+                                "Skip",
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  index = index + 1;
+                                });
+                              },
+                            ),
+                          ],
                         ),
                         const Divider(thickness: 1.5),
                         const SizedBox(height: kDefaultPadding),
