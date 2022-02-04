@@ -45,22 +45,30 @@ class ScoreScreen extends StatelessWidget {
                     ?.copyWith(color: kSecondaryColor),
               ),
               Spacer(), // 1/6
-              InkWell(
-                onTap: () {fl},
-                child: Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(kDefaultPadding * 0.75), // 15
-                  decoration: const BoxDecoration(
-                    gradient: kPrimaryGradient,
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                  ),
-                  child: Text(
-                    "Lets Start Quiz",
-                    style: Theme.of(context)
-                        .textTheme
-                        .button
-                        ?.copyWith(color: Colors.black),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: InkWell(
+                  onTap: () {
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => MyApp(toString())));
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(kDefaultPadding * 0.75), // 15
+                    decoration: const BoxDecoration(
+                      gradient: kPrimaryGradient,
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                    ),
+                    child: Text(
+                      "StartAgain Quiz",
+                      style: Theme.of(context)
+                          .textTheme
+                          .button
+                          ?.copyWith(color: Colors.black),
+                    ),
                   ),
                 ),
               ),
