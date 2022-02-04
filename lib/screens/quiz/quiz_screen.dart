@@ -57,6 +57,7 @@ class _BodyState extends State<QuestionBody> {
   int qoptionindex = 0;
   int _correctAns = 0;
   int _numcorrect = 0;
+  bool _answred = false;
 
   Future<List<QuestinModel>> getdata() async {
     var response = await http.get(Uri.parse(
@@ -141,9 +142,7 @@ class _BodyState extends State<QuestionBody> {
                                 "Skip",
                               ),
                               onTap: () {
-                                setState(() {
-                                  index = index + 1;
-                                });
+                                changeQueston();
                               },
                             ),
                           ],
@@ -227,6 +226,7 @@ class _BodyState extends State<QuestionBody> {
 
   void checkAns(int selectedIndex) {
     // because once user press any option then it will run
+    _answred = true;
 
     if (_questions[index].opt1 == _questions[index].ans) {
       _correctAns = 1;
@@ -262,6 +262,7 @@ class _BodyState extends State<QuestionBody> {
                       _questions.length.toString(), _numcorrect.toString())));
         } else {
           index = index + 1;
+          _answred = false;
           qoptionindex = 0;
         }
       });
@@ -271,24 +272,19 @@ class _BodyState extends State<QuestionBody> {
     });
   }
 
-  // Color getTheRightColor() {
-  //   if (qnController.isAnswered) {
-  //     if (index == qnController.correctAns) {
-  //       return kGreenColor;
-  //     } else if (index == qnController.selectedAns &&
-  //         qnController.selectedAns != qnController.correctAns) {
-  //       return kRedColor;
-  //     }
-  //   }
-  //   return kGrayColor;
-  // }
-
-  // IconData getTheRightIcon() {
-  //   return getTheRightColor() == kRedColor ? Icons.close : Icons.done;
-  // }
   void changeQueston() {
     setState(() {
-      index = index + 1;
+      if (index == _questions.length - 1) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ScoreScreen(
+                    _questions.length.toString(), _numcorrect.toString())));
+      } else {
+        index = index + 1;
+        _answred = false;
+        qoptionindex = 0;
+      }
     });
   }
 
@@ -296,8 +292,10 @@ class _BodyState extends State<QuestionBody> {
     return SingleChildScrollView(
       child: InkWell(
         onTap: () {
-          qoptionindex = optionindex;
-          checkAns(optionindex);
+          if (!_answred) {
+            qoptionindex = optionindex;
+            checkAns(optionindex);
+          }
         },
         child: Container(
           margin: const EdgeInsets.only(top: kDefaultPadding),

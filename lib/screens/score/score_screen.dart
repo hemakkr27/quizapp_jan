@@ -44,15 +44,13 @@ class ScoreScreen extends StatelessWidget {
                     .headline4
                     ?.copyWith(color: kSecondaryColor),
               ),
-              Spacer(), // 1/6
+              const Spacer(), // 1/6
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: InkWell(
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => MyApp(toString())));
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) => QuizScreen()));
                   },
                   child: Container(
                     width: double.infinity,
