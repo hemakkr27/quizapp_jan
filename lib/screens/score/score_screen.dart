@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testing/controllers/question_controller.dart';
+import 'package:testing/screens/quiz/quiz_screen.dart';
 
 import '../../constants.dart';
 // import 'package:quiz_app/constants.dart';
@@ -42,6 +43,26 @@ class ScoreScreen extends StatelessWidget {
                     .textTheme
                     .headline4
                     ?.copyWith(color: kSecondaryColor),
+              ),
+              Spacer(), // 1/6
+              InkWell(
+                onTap: () {fl},
+                child: Container(
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(kDefaultPadding * 0.75), // 15
+                  decoration: const BoxDecoration(
+                    gradient: kPrimaryGradient,
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                  ),
+                  child: Text(
+                    "Lets Start Quiz",
+                    style: Theme.of(context)
+                        .textTheme
+                        .button
+                        ?.copyWith(color: Colors.black),
+                  ),
+                ),
               ),
               Spacer(flex: 3),
             ],

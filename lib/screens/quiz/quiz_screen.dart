@@ -150,39 +150,50 @@ class _BodyState extends State<QuestionBody> {
                         ),
                         const Divider(thickness: 1.5),
                         const SizedBox(height: kDefaultPadding),
-                        Container(
-                          padding: const EdgeInsets.all(kDefaultPadding),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: kGrayColor),
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Column(
-                            children: [
-                              //  Image.asset("assets/bhagvt.jpg", ),
-                              Text(
-                                _questions[index].question,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline6
-                                    ?.copyWith(color: kBlackColor),
-                              ),
-                              Optons(
-                                1,
-                                _questions[index].opt1,
-                              ),
-                              Optons(
-                                2,
-                                _questions[index].opt2,
-                              ),
-                              Optons(
-                                3,
-                                _questions[index].opt3,
-                              ),
-                              Optons(
-                                4,
-                                _questions[index].opt4,
-                              )
-                            ],
+                        Flexible(
+                          child: Container(
+                            padding: const EdgeInsets.all(kDefaultPadding),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: kGrayColor),
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Column(
+                              children: [
+                                Flexible(
+                                  child: ListView(
+                                    shrinkWrap: true,
+                                    children: [
+                                      // Image.asset(
+                                      //   "assets/bhagvt.jpg",
+                                      // ),
+                                      Text(
+                                        _questions[index].question,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(color: kBlackColor),
+                                      ),
+                                      Optons(
+                                        1,
+                                        _questions[index].opt1,
+                                      ),
+                                      Optons(
+                                        2,
+                                        _questions[index].opt2,
+                                      ),
+                                      Optons(
+                                        3,
+                                        _questions[index].opt3,
+                                      ),
+                                      Optons(
+                                        4,
+                                        _questions[index].opt4,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -239,7 +250,7 @@ class _BodyState extends State<QuestionBody> {
     //_animationController!.stop();
     setState(() {});
     // Once user select an ans after 3s it will go to the next qn
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       _questionController.ResetPrograss();
 
       setState(() {

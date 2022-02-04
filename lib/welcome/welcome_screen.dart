@@ -53,7 +53,8 @@ class WelcomeScreen extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
-                      padding: EdgeInsets.all(kDefaultPadding * 0.75), // 15
+                      padding:
+                          const EdgeInsets.all(kDefaultPadding * 0.75), // 15
                       decoration: const BoxDecoration(
                         gradient: kPrimaryGradient,
                         borderRadius: BorderRadius.all(Radius.circular(12)),

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:testing/model/Questions.dart';
+
 import 'package:testing/screens/quiz/quiz_screen.dart';
 
 // We use get package for our state management
@@ -14,19 +14,6 @@ class QuestionController extends GetxController
   // so that we can access our animation outside
   Animation? get animation => this._animation;
 
-  // final List<Question> _questions = sample_data
-  //     .map(
-  //       (question) => Question(
-  //         id: question['id'],
-  //         question: question['question'],
-  //         options: question['options'],
-  //         answer: question['answer_index'],
-  //         image: question['image'],
-  //       ),
-  //     )
-  //     .toList();
-
-  // called immediately after the widget is allocated memory
   @override
   void onInit() {
     // Our animation duration is 60 s
