@@ -8,9 +8,10 @@ import '../../constants.dart';
 // import 'package:quiz_app/controllers/question_controller.dart';
 
 class ScoreScreen extends StatelessWidget {
+  String id;
   String totalqueston;
   String score;
-  ScoreScreen(this.totalqueston, this.score);
+  ScoreScreen(this.totalqueston, this.score, this.id);
   @override
   Widget build(BuildContext context) {
     QuestionController _qnController = Get.put(QuestionController());
@@ -49,8 +50,10 @@ class ScoreScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: InkWell(
                   onTap: () {
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (context) => QuizScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QuizScreen(id)));
                   },
                   child: Container(
                     width: double.infinity,
@@ -61,7 +64,7 @@ class ScoreScreen extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(12)),
                     ),
                     child: Text(
-                      "StartAgain Quiz",
+                      "Start Again Quiz",
                       style: Theme.of(context)
                           .textTheme
                           .button
