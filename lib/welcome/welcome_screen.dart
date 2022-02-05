@@ -24,7 +24,12 @@ class WelcomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Spacer(flex: 2), //2/6
+                  const Spacer(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Center(child: Image.asset("assets/images_2.png")),
+                  Spacer(flex: 1), //2/6
                   Text(
                     "Let's Play Quiz,",
                     style: Theme.of(context).textTheme.headline4?.copyWith(
@@ -42,7 +47,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Spacer(), // 1/6
+                  const Spacer(), // 1/6
                   InkWell(
                     onTap: () {
                       Navigator.push(
