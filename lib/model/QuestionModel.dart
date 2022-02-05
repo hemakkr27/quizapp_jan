@@ -18,9 +18,9 @@ class QuestinModel {
     required this.opt2,
     required this.opt3,
     required this.opt4,
+    required this.image,
     required this.ans,
     required this.qtype,
-    //   required this.image,
   });
 
   int qno;
@@ -29,9 +29,9 @@ class QuestinModel {
   String opt2;
   String opt3;
   String opt4;
+  dynamic image;
   String ans;
   String qtype;
-  // dynamic image;
 
   factory QuestinModel.fromJson(Map<String, dynamic> json) => QuestinModel(
         qno: json["Qno"],
@@ -40,9 +40,9 @@ class QuestinModel {
         opt2: json["Opt2"],
         opt3: json["Opt3"],
         opt4: json["Opt4"],
+        image: json["image"],
         ans: json["Ans"],
         qtype: json["Qtype"],
-        //  image: json["image"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -52,8 +52,8 @@ class QuestinModel {
         "Opt2": opt2,
         "Opt3": opt3,
         "Opt4": opt4,
+        "Image": image,
         "Ans": ans,
         "Qtype": qtype,
-        // "Image": image,
       };
 }

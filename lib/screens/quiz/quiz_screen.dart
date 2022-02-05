@@ -162,9 +162,13 @@ class _BodyState extends State<QuestionBody> {
                                   child: ListView(
                                     shrinkWrap: true,
                                     children: [
-                                      // Image.asset(
-                                      //   "assets/bhagvt.jpg",
-                                      // ),
+                                      _questions[index].image != ""
+                                          ? Image.network(
+                                              _questions[index].image)
+                                          : Container(),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
                                       Text(
                                         _questions[index].question,
                                         style: Theme.of(context)
