@@ -24,56 +24,82 @@ class WelcomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Spacer(),
-                  SizedBox(
-                    height: 20,
+                  //  const Spacer(),
+                  const SizedBox(
+                    height: 30,
                   ),
-                  Center(child: Image.asset("assets/images_2.png")),
-                  Spacer(flex: 1), //2/6
-                  Text(
-                    "Let's Play Quiz,",
-                    style: Theme.of(context).textTheme.headline4?.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                  Text("Enter your informations below"),
-                  const Spacer(), // 1/6
-                  const TextField(
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xFF1C2341),
-                      hintText: "Full Name",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                      ),
+                  Flexible(
+                    child: ListView(
+                      children: [
+                        Center(child: Image.asset("assets/im.png")),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Center(child: Image.asset("assets/images_2.png")),
+                        // const Spacer(),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "Let's Play Quiz,",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline4
+                              ?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                        ),
+                        const Text("Enter your informations below"),
+                        // const Spacer(), // 1/6
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        const TextField(
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(0xFF1C2341),
+                            hintText: "Full Name",
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12)),
+                            ),
+                          ),
+                        ),
+                        // const Spacer(), // 1/6
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => QuizScreen(id)));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            alignment: Alignment.center,
+                            padding: const EdgeInsets.all(
+                                kDefaultPadding * 0.75), // 15
+                            decoration: const BoxDecoration(
+                              gradient: kPrimaryGradient,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12)),
+                            ),
+                            child: Text(
+                              "Lets Start Quiz",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .button
+                                  ?.copyWith(color: Colors.black),
+                            ),
+                          ),
+                        ),
+                        const Spacer(flex: 2),
+                      ],
                     ),
-                  ),
-                  const Spacer(), // 1/6
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => QuizScreen(id)));
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      padding:
-                          const EdgeInsets.all(kDefaultPadding * 0.75), // 15
-                      decoration: const BoxDecoration(
-                        gradient: kPrimaryGradient,
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                      ),
-                      child: Text(
-                        "Lets Start Quiz",
-                        style: Theme.of(context)
-                            .textTheme
-                            .button
-                            ?.copyWith(color: Colors.black),
-                      ),
-                    ),
-                  ),
-                  const Spacer(flex: 2), // it will take 2/6 spaces
+                  ), //2/6
+                  // it will take 2/6 spaces
                 ],
               ),
             ),
