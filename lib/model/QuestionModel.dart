@@ -19,6 +19,7 @@ class QuestinModel {
     required this.opt3,
     required this.opt4,
     required this.image,
+    //  required this.video,
     required this.ans,
     required this.qtype,
   });
@@ -30,6 +31,7 @@ class QuestinModel {
   String opt3;
   String opt4;
   dynamic image;
+  // dynamic video;
   String ans;
   String qtype;
 
@@ -41,6 +43,7 @@ class QuestinModel {
         opt3: json["Opt3"],
         opt4: json["Opt4"],
         image: json["image"],
+        //    video: json["video"],
         ans: json["Ans"],
         qtype: json["Qtype"],
       );
@@ -53,6 +56,7 @@ class QuestinModel {
         "Opt3": opt3,
         "Opt4": opt4,
         "Image": image,
+        //  "Video": video,
         "Ans": ans,
         "Qtype": qtype,
       };

@@ -7,6 +7,7 @@ import 'package:testing/model/QuestionModel.dart';
 //import 'package:testing/model/Questions.dart';
 
 import 'package:testing/screens/score/score_screen.dart';
+import 'package:video_player/video_player.dart';
 // import 'package:quiz_app/constants.dart';
 // import 'package:quiz_app/controllers/question_controller.dart';
 
@@ -162,6 +163,20 @@ class _BodyState extends State<QuestionBody> {
                                   child: ListView(
                                     shrinkWrap: true,
                                     children: [
+                                      Container(
+                                        width: double.infinity,
+                                        height: 100,
+                                        alignment: Alignment.center,
+                                        child: VideoPlayerScreen(),
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      // Image.network(
+                                      //   "https://assets-global.website-files.com/5e3c45dea042cf97f3689681/5e417cd336a72b06a86c73e7_Flutter-Tutorial-Header%402x-p-2000.jpeg",
+                                      //   width: 100,
+                                      //   height: 100,
+                                      // ),
                                       _questions[index].image != ""
                                           ? Image.network(
                                               _questions[index].image)
@@ -336,6 +351,77 @@ class _BodyState extends State<QuestionBody> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class VideoPlayerScreen extends StatefulWidget {
+  //VideoPlayerScreen({Key key}) : super(key: key);
+
+  @override
+  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+}
+
+class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+  late VideoPlayerController _controller;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    _controller = VideoPlayerController.network(
+      'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+    );
+    _initializeVideoPlayerFuture = _controller.initialize();
+
+    _controller.setLooping(true);
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        alignment: AlignmentDirectional.center,
+        children: [
+          FutureBuilder(
+            future: _initializeVideoPlayerFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return AspectRatio(
+                  aspectRatio: _controller.value.aspectRatio,
+                  child: VideoPlayer(_controller),
+                );
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                // pause
+                if (_controller.value.isPlaying) {
+                  _controller.pause();
+                } else {
+                  // play
+                  _controller.play();
+                }
+              });
+            },
+            child: Icon(
+              _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+            ),
+          ),
+        ],
       ),
     );
   }
