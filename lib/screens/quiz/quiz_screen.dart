@@ -164,7 +164,7 @@ class _BodyState extends State<QuestionBody> {
                                     shrinkWrap: true,
                                     children: [
                                       Container(
-                                        width: double.infinity,
+                                        width: 50,
                                         height: 100,
                                         alignment: Alignment.center,
                                         child: VideoPlayerScreen(),
@@ -172,11 +172,6 @@ class _BodyState extends State<QuestionBody> {
                                       const SizedBox(
                                         height: 15,
                                       ),
-                                      // Image.network(
-                                      //   "https://assets-global.website-files.com/5e3c45dea042cf97f3689681/5e417cd336a72b06a86c73e7_Flutter-Tutorial-Header%402x-p-2000.jpeg",
-                                      //   width: 100,
-                                      //   height: 100,
-                                      // ),
                                       _questions[index].image != ""
                                           ? Image.network(
                                               _questions[index].image)
@@ -352,6 +347,18 @@ class _BodyState extends State<QuestionBody> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class VideoPlayerApp extends StatelessWidget {
+  String url1;
+  VideoPlayerApp({Key? key, required this.url1}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: VideoPlayerScreen(),
     );
   }
 }

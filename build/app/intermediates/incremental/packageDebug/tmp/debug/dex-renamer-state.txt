@@ -1,0 +1,4 @@
+#Tue Feb 08 16:51:00 PST 2022
+base.0=E\:\\change_App\\testing\\testing\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
