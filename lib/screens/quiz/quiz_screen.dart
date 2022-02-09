@@ -83,7 +83,8 @@ class _BodyState extends State<QuestionBody> {
     }
   }
 
-  var _visible1 = false;
+  // var _visible1 = false;
+
   Color colortoshow1 = Colors.white;
   Color colortoshow2 = Colors.white;
   Color colortoshow3 = Colors.white;
@@ -163,16 +164,26 @@ class _BodyState extends State<QuestionBody> {
                                   child: ListView(
                                     shrinkWrap: true,
                                     children: [
-                                      Container(
-                                        width: 50,
-                                        height: 100,
-                                        alignment: Alignment.center,
-                                        child: VideoPlayerScreen(),
-                                      ),
+                                      _questions[index].image != "" &&
+                                              _questions[index].ltype != "" &&
+                                              _questions[index].ltype != "V"
+                                          ? Center(
+                                              child: Container(
+                                                width: 150,
+                                                height: 90,
+                                                alignment: Alignment.center,
+                                                child: VideoPlayerScreen(
+                                                    Videourl: _questions[index]
+                                                        .image),
+                                              ),
+                                            )
+                                          : Container(),
                                       const SizedBox(
                                         height: 15,
                                       ),
-                                      _questions[index].image != ""
+                                      _questions[index].image != "" &&
+                                              _questions[index].ltype != "" &&
+                                              _questions[index].ltype != "I"
                                           ? Image.network(
                                               _questions[index].image)
                                           : Container(),
@@ -214,7 +225,7 @@ class _BodyState extends State<QuestionBody> {
                   ))
                 : Center(
                     child: Container(
-                      child: Text("loading...."),
+                      child: const Text("loading...."),
                     ),
                   );
           },
@@ -351,20 +362,22 @@ class _BodyState extends State<QuestionBody> {
   }
 }
 
-class VideoPlayerApp extends StatelessWidget {
-  String url1;
-  VideoPlayerApp({Key? key, required this.url1}) : super(key: key);
+// class VideoPlayerApp extends StatelessWidget {
+//   String Videourl;
+//   VideoPlayerApp({Key? key, required this.Videourl}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: VideoPlayerScreen(),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: VideoPlayerScreen(),
+//     );
+//   }
+// }
 
 class VideoPlayerScreen extends StatefulWidget {
-  //VideoPlayerScreen({Key key}) : super(key: key);
+  VideoPlayerScreen({Key? key, required this.Videourl}) : super(key: key);
+
+  String Videourl;
 
   @override
   _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
@@ -376,9 +389,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   void initState() {
-    _controller = VideoPlayerController.network(
-      'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
-    );
+    _controller = VideoPlayerController.network(widget.Videourl);
     _initializeVideoPlayerFuture = _controller.initialize();
 
     _controller.setLooping(true);

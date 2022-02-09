@@ -21,10 +21,10 @@
 17    <application
 18        android:name="android.app.Application"
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.6.0] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\33977919913c8fbaca013c565505b3be\core-1.6.0\AndroidManifest.xml:24:18-86
+19-->[androidx.core:core:1.6.0] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\b781330f13e915c5e33e9edfc19100b1\core-1.6.0\AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
 21        android:icon="@mipmap/ic_launcher"
-22        android:label="testing" >
+22        android:label="QuizApp" >
 23        <activity
 24            android:name="com.example.testing.MainActivity"
 25            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -59,17 +59,17 @@
 54            android:value="2" />
 55
 56        <uses-library
-56-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\55142b6c6786cd77c3e68b49aa968549\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+56-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\1402869ddbbccf84f3a3a1b1d50ecac7\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 57            android:name="androidx.window.extensions"
-57-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\55142b6c6786cd77c3e68b49aa968549\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+57-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\1402869ddbbccf84f3a3a1b1d50ecac7\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
 58            android:required="false" />
-58-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\55142b6c6786cd77c3e68b49aa968549\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+58-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\1402869ddbbccf84f3a3a1b1d50ecac7\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
 59        <uses-library
-59-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\55142b6c6786cd77c3e68b49aa968549\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+59-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\1402869ddbbccf84f3a3a1b1d50ecac7\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
 60            android:name="androidx.window.sidecar"
-60-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\55142b6c6786cd77c3e68b49aa968549\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+60-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\1402869ddbbccf84f3a3a1b1d50ecac7\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
 61            android:required="false" />
-61-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\55142b6c6786cd77c3e68b49aa968549\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+61-->[androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\1402869ddbbccf84f3a3a1b1d50ecac7\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
 62    </application>
 63
 64</manifest>
