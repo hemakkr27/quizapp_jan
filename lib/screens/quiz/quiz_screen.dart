@@ -166,7 +166,7 @@ class _BodyState extends State<QuestionBody> {
                                     children: [
                                       _questions[index].image != "" &&
                                               _questions[index].ltype != "" &&
-                                              _questions[index].ltype != "V"
+                                              _questions[index].ltype == "V"
                                           ? Center(
                                               child: Container(
                                                 width: 150,
@@ -183,9 +183,10 @@ class _BodyState extends State<QuestionBody> {
                                       ),
                                       _questions[index].image != "" &&
                                               _questions[index].ltype != "" &&
-                                              _questions[index].ltype != "I"
+                                              _questions[index].ltype == "I"
                                           ? Image.network(
-                                              _questions[index].image)
+                                              _questions[index].image,
+                                            )
                                           : Container(),
                                       const SizedBox(
                                         height: 15,
