@@ -91,6 +91,7 @@ class _BodyState extends State<QuestionBody> {
   Color colortoshow4 = Colors.white;
   Color right = Colors.green;
   Color wrong = Colors.red;
+  final nextprevi = true;
 
   // ignore: missing_return
   QuestionController _questionController = Get.put(QuestionController());
@@ -139,17 +140,47 @@ class _BodyState extends State<QuestionBody> {
                                 ],
                               ),
                             ),
-                            GestureDetector(
-                              child: const Text(
-                                "Skip",
+                            MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                child: const Text(
+                                  "Skip",
+                                ),
+                                onTap: () {
+                                  changeQueston();
+                                },
                               ),
-                              onTap: () {
-                                changeQueston();
-                              },
                             ),
                           ],
                         ),
                         const Divider(thickness: 1.5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                child: const Icon(Icons.arrow_back_rounded),
+                                onTap: () {
+                                  setState(() {
+                                    if (index != 0) {
+                                      index--;
+                                    }
+                                  });
+                                },
+                              ),
+                            ),
+                            MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                child: const Icon(Icons.arrow_forward_rounded),
+                                onTap: () {
+                                  changeQueston();
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
                         const SizedBox(height: kDefaultPadding),
                         Flexible(
                           child: Container(
@@ -186,7 +217,9 @@ class _BodyState extends State<QuestionBody> {
                                               _questions[index].ltype == "I"
                                           ? Image.network(
                                               _questions[index].image,
-                                            )
+                                              width: 200,
+                                              height: 150,
+                                              fit: BoxFit.fill)
                                           : Container(),
                                       const SizedBox(
                                         height: 15,
