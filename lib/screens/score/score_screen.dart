@@ -11,8 +11,8 @@ class ScoreScreen extends StatelessWidget {
   String id;
   String totalqueston;
   String score;
-  String Backid;
-  ScoreScreen(this.totalqueston, this.score, this.id, this.Backid);
+  String backid;
+  ScoreScreen(this.totalqueston, this.score, this.id, this.backid);
   @override
   Widget build(BuildContext context) {
     QuestionController _qnController = Get.put(QuestionController());
@@ -54,7 +54,12 @@ class ScoreScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuizScreen(id)));
+                            builder: (context) => QuizScreen(backid)));
+
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => QuizScreen(id)));
                   },
                   child: Container(
                     width: double.infinity,
