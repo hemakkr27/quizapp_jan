@@ -204,7 +204,7 @@ class _BodyState extends State<QuestionBody> {
                                           ? Center(
                                               child: Container(
                                                 width: 350,
-                                                height: 300,
+                                                height: 250,
                                                 alignment: Alignment.center,
                                                 child: VideoPlayerScreen(
                                                     Videourl: _questions[index]
@@ -218,11 +218,17 @@ class _BodyState extends State<QuestionBody> {
                                       _questions[index].image != "" &&
                                               _questions[index].ltype != "" &&
                                               _questions[index].ltype == "I"
-                                          ? Image.network(
-                                              _questions[index].image,
-                                              width: 200,
-                                              height: 150,
-                                              fit: BoxFit.fill)
+                                          ? SizedBox(
+                                              width: 350,
+                                              height: 300,
+                                              child: Image.network(
+                                                _questions[index].image,
+                                                // width: 200,
+                                                // height: 150,
+
+                                                //  fit: BoxFit.fill
+                                              ),
+                                            )
                                           : Container(),
                                       const SizedBox(
                                         height: 15,
@@ -445,58 +451,56 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       body: Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                FutureBuilder(
-                  future: _initializeVideoPlayerFuture,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      return AspectRatio(
-                        aspectRatio: _controller.value.aspectRatio,
-                        child: VideoPlayer(_controller),
-                      );
-                    } else {
-                      return Center(child: CircularProgressIndicator());
-                    }
-                  },
-                ),
-                VideoProgressIndicator(
-                  _controller,
-                  allowScrubbing: true,
-                  // padding: const EdgeInsets.all(10)
-                ),
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          // pause
-                          if (_controller.value.isPlaying) {
-                            _controller.pause();
-                          } else {
-                            // play
-                            _controller.play();
-                          }
-                        });
-                      },
-                      icon: Icon(
-                        _controller.value.isPlaying
-                            ? Icons.pause
-                            : Icons.play_arrow,
-                      ),
+          Column(
+            children: [
+              FutureBuilder(
+                future: _initializeVideoPlayerFuture,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    );
+                  } else {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                },
+              ),
+              VideoProgressIndicator(
+                _controller,
+                allowScrubbing: true,
+                // padding: const EdgeInsets.all(10)
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        // pause
+                        if (_controller.value.isPlaying) {
+                          _controller.pause();
+                        } else {
+                          // play
+                          _controller.play();
+                        }
+                      });
+                    },
+                    icon: Icon(
+                      _controller.value.isPlaying
+                          ? Icons.pause
+                          : Icons.play_arrow,
                     ),
-                    // Text(
-                    //     '${convertToMinutesSecounds(_controller.value.position)}/ ${convertToMinutesSecounds(_controller.value.duration)}')
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 0),
-                      child: Text(
-                          '${convertToMinutesSecounds(videoPositopn)}/ ${convertToMinutesSecounds(_controller.value.duration)}'),
-                    )
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  // Text(
+                  //     '${convertToMinutesSecounds(_controller.value.position)}/ ${convertToMinutesSecounds(_controller.value.duration)}')
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 0),
+                    child: Text(
+                        '${convertToMinutesSecounds(videoPositopn)}/ ${convertToMinutesSecounds(_controller.value.duration)}'),
+                  )
+                ],
+              ),
+            ],
           ),
         ],
       ),
