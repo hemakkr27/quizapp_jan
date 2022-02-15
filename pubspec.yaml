@@ -38,6 +38,11 @@ dependencies:
   http: ^0.13.4
   video_player_web: ^2.0.6
   video_player: ^2.2.18
+  youtube_player_flutter: ^8.0.0
+  flutter_inappwebview: ^5.3.2
+  flutter_youtube_view: ^2.0.2
+//  youtube_player_iframe: ^2.2.2
+  # url_launcher: ^5.4.0
 
 dev_dependencies:
   flutter_test:

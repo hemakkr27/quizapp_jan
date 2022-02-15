@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:testing/controllers/question_controller.dart';
@@ -5,9 +6,11 @@ import 'package:testing/controllers/question_controller.dart';
 
 import '../../../constants.dart';
 
+String callback = Icon(Icons.ac_unit) as String;
+
 class ProgressBar extends StatelessWidget {
   const ProgressBar({Key? key}) : super(key: key);
-  @override
+
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -33,6 +36,7 @@ class ProgressBar extends StatelessWidget {
                   ),
                 ),
               ),
+
               Positioned.fill(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:testing/welcome/welcome_screen.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import 'VideoPlayerApp .dart';
+
+//import 'VideoPlayerApp .dart';
+
 void main() {
   String myurl = Uri.base.toString(); //get complete url
   String? para1 =
@@ -20,6 +24,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: WelcomeScreen(id = id),
+      //Videopl()
+      //WelcomeScreen(id = id),
     );
   }
 }

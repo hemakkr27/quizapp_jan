@@ -148,6 +148,7 @@ class _BodyState extends State<QuestionBody> {
                                 ),
                                 onTap: () {
                                   changeQueston();
+                                  _questionController.ResetPrograss();
                                 },
                               ),
                             ),
@@ -165,6 +166,7 @@ class _BodyState extends State<QuestionBody> {
                                   setState(() {
                                     if (index != 0) {
                                       index--;
+                                      _questionController.ResetPrograss();
                                     }
                                   });
                                 },
@@ -176,6 +178,7 @@ class _BodyState extends State<QuestionBody> {
                                 child: const Icon(Icons.arrow_forward_rounded),
                                 onTap: () {
                                   changeQueston();
+                                  _questionController.ResetPrograss();
                                 },
                               ),
                             ),
@@ -200,8 +203,8 @@ class _BodyState extends State<QuestionBody> {
                                               _questions[index].ltype == "V"
                                           ? Center(
                                               child: Container(
-                                                width: 150,
-                                                height: 90,
+                                                width: 350,
+                                                height: 300,
                                                 alignment: Alignment.center,
                                                 child: VideoPlayerScreen(
                                                     Videourl: _questions[index]
@@ -396,18 +399,6 @@ class _BodyState extends State<QuestionBody> {
   }
 }
 
-// class VideoPlayerApp extends StatelessWidget {
-//   String Videourl;
-//   VideoPlayerApp({Key? key, required this.Videourl}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: VideoPlayerScreen(),
-//     );
-//   }
-// }
-
 class VideoPlayerScreen extends StatefulWidget {
   VideoPlayerScreen({Key? key, required this.Videourl}) : super(key: key);
 
@@ -420,11 +411,21 @@ class VideoPlayerScreen extends StatefulWidget {
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
+  late Duration videoLength;
+  late Duration videoPositopn;
 
   @override
   void initState() {
-    _controller = VideoPlayerController.network(widget.Videourl);
+    _controller = VideoPlayerController.network(widget.Videourl)
+      ..addListener(() {
+        setState(() {
+          videoPositopn = _controller.value.position;
+        });
+      });
     _initializeVideoPlayerFuture = _controller.initialize();
+    setState(() {
+      videoPositopn = _controller.value.duration;
+    });
 
     _controller.setLooping(true);
 
@@ -444,37 +445,67 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       body: Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          FutureBuilder(
-            future: _initializeVideoPlayerFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                );
-              } else {
-                return Center(child: CircularProgressIndicator());
-              }
-            },
-          ),
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                // pause
-                if (_controller.value.isPlaying) {
-                  _controller.pause();
-                } else {
-                  // play
-                  _controller.play();
-                }
-              });
-            },
-            child: Icon(
-              _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                FutureBuilder(
+                  future: _initializeVideoPlayerFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      return AspectRatio(
+                        aspectRatio: _controller.value.aspectRatio,
+                        child: VideoPlayer(_controller),
+                      );
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+                VideoProgressIndicator(
+                  _controller,
+                  allowScrubbing: true,
+                  // padding: const EdgeInsets.all(10)
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          // pause
+                          if (_controller.value.isPlaying) {
+                            _controller.pause();
+                          } else {
+                            // play
+                            _controller.play();
+                          }
+                        });
+                      },
+                      icon: Icon(
+                        _controller.value.isPlaying
+                            ? Icons.pause
+                            : Icons.play_arrow,
+                      ),
+                    ),
+                    // Text(
+                    //     '${convertToMinutesSecounds(_controller.value.position)}/ ${convertToMinutesSecounds(_controller.value.duration)}')
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 0),
+                      child: Text(
+                          '${convertToMinutesSecounds(videoPositopn)}/ ${convertToMinutesSecounds(_controller.value.duration)}'),
+                    )
+                  ],
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
   }
+}
+
+String convertToMinutesSecounds(Duration duration) {
+  final minutes = duration.inMinutes;
+  final secound = duration.inSeconds;
+  return '$minutes:$secound';
 }
