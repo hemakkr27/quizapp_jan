@@ -327,9 +327,11 @@ class _BodyState extends State<QuestionBody> {
               context,
               MaterialPageRoute(
                   builder: (context) => ScoreScreen(
-                      _questions.length.toString(),
-                      _numcorrect.toString(),
-                      widget.id)));
+                        _questions.length.toString(),
+                        _numcorrect.toString(),
+                        widget.id,
+                        _questions[index].backid,
+                      )));
         } else {
           index = index + 1;
           _answred = false;
@@ -348,8 +350,12 @@ class _BodyState extends State<QuestionBody> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ScoreScreen(_questions.length.toString(),
-                    _numcorrect.toString(), widget.id)));
+                builder: (context) => ScoreScreen(
+                      _questions.length.toString(),
+                      _numcorrect.toString(),
+                      widget.id,
+                      _questions[index].backid,
+                    )));
       } else {
         index = index + 1;
         _answred = false;

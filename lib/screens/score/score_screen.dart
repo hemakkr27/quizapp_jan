@@ -11,7 +11,8 @@ class ScoreScreen extends StatelessWidget {
   String id;
   String totalqueston;
   String score;
-  ScoreScreen(this.totalqueston, this.score, this.id);
+  String Backid;
+  ScoreScreen(this.totalqueston, this.score, this.id, this.Backid);
   @override
   Widget build(BuildContext context) {
     QuestionController _qnController = Get.put(QuestionController());
