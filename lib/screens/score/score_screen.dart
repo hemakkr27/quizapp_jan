@@ -1,11 +1,18 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testing/controllers/question_controller.dart';
+// ignore: unused_import
 import 'package:testing/screens/quiz/quiz_screen.dart';
+//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
 // import 'package:quiz_app/constants.dart';
 // import 'package:quiz_app/controllers/question_controller.dart';
+
+//String Backid = "https://kurukshetra.gov.in/brahmasarovar/";
 
 class ScoreScreen extends StatelessWidget {
   String id;
@@ -47,35 +54,52 @@ class ScoreScreen extends StatelessWidget {
                     ?.copyWith(color: kSecondaryColor),
               ),
               const Spacer(), // 1/6
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => QuizScreen(backid)));
+              //Padding(
+              //   padding: const EdgeInsets.all(20.0),
+              //   child: InkWell(
+              //     onTap:
+              //         //_launchURLApp,
+              //         () {
+              //       Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               builder: (context) => QuizScreen(id)));
+              //     },
+              //     child: Container(
+              //       width: double.infinity,
+              //       alignment: Alignment.center,
+              //       padding: const EdgeInsets.all(kDefaultPadding * 0.75), // 15
+              //       decoration: const BoxDecoration(
+              //         gradient: kPrimaryGradient,
+              //         borderRadius: BorderRadius.all(Radius.circular(12)),
+              //       ),
+              //       child: Text(
+              //         "Start Again Quiz",
+              //         style: Theme.of(context)
+              //             .textTheme
+              //             .button
+              //             ?.copyWith(color: Colors.black),
+              //       ),
+              //     ),
+              //   ),
+              // ),
 
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => QuizScreen(id)));
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(kDefaultPadding * 0.75), // 15
-                    decoration: const BoxDecoration(
-                      gradient: kPrimaryGradient,
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                    ),
-                    child: Text(
-                      "Start Again Quiz",
-                      style: Theme.of(context)
-                          .textTheme
-                          .button
-                          ?.copyWith(color: Colors.black),
-                    ),
+              Container(
+                width: double.infinity,
+                alignment: Alignment.center,
+
+                padding: const EdgeInsets.all(kDefaultPadding * 0.75), // 15
+                decoration: const BoxDecoration(
+                  gradient: kPrimaryGradient,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                child: ElevatedButton(
+                  onPressed: _launchURL,
+                  child: Text(
+                    "Start Again Quiz",
+                    style: Theme.of(context).textTheme.button?.copyWith(
+                          color: Colors.black,
+                        ),
                   ),
                 ),
               ),
@@ -87,6 +111,17 @@ class ScoreScreen extends StatelessWidget {
     );
   }
 }
+
+_launchURL() async {
+  const url = 'https://kurukshetra.gov.in/';
+  if (await canLaunch(url)) {
+    await launch(url, forceSafariVC: true, forceWebView: true);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+
 
 //flutter doctor -v
 //flutter run --enable-software-rendering

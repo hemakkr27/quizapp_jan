@@ -1,3 +1,39 @@
+// import 'package:flutter/material.dart';
+// import 'package:url_launcher/url_launcher.dart';
+
+// class Urlcls extends StatefulWidget {
+//   const Urlcls({Key? key}) : super(key: key);
+
+//   @override
+//   _UrlclsState createState() => _UrlclsState();
+// }
+
+// class _UrlclsState extends State<Urlcls> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       child: const Center(
+//         child: ElevatedButton(
+//           onPressed: _launchURL,
+//           child: Text('Show Flutter homepage'),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// _launchURL() async {
+//   const url = 'https://flutter.io';
+//   if (await canLaunch(url)) {
+//     await launch(url);
+//   } else {
+//     throw 'Could not launch $url';
+//   }
+// }
+
+
+
+
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:youtube_player_flutter/youtube_player_flutter.dart';

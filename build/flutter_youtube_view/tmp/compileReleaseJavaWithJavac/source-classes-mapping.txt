@@ -1,2 +1,0 @@
-com/hoanglm/flutteryoutubeview/BuildConfig.java
- com.hoanglm.flutteryoutubeview.BuildConfig

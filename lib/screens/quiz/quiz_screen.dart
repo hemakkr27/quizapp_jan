@@ -220,7 +220,7 @@ class _BodyState extends State<QuestionBody> {
                                               _questions[index].ltype == "I"
                                           ? SizedBox(
                                               width: 350,
-                                              height: 300,
+                                              // height: 180,
                                               child: Image.network(
                                                 _questions[index].image,
                                                 // width: 200,

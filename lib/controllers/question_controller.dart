@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-import 'package:testing/screens/quiz/quiz_screen.dart';
-
 // We use get package for our state management
 
 class QuestionController extends GetxController
