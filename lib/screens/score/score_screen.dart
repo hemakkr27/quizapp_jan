@@ -22,7 +22,7 @@ class ScoreScreen extends StatelessWidget {
   ScoreScreen(this.totalqueston, this.score, this.id, this.backid);
   @override
   Widget build(BuildContext context) {
-    QuestionController _qnController = Get.put(QuestionController());
+//    QuestionController _qnController = Get.put(QuestionController());
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -94,7 +94,7 @@ class ScoreScreen extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 child: ElevatedButton(
-                  onPressed: _launchURL,
+                  onPressed: _launchURL(backid),
                   child: Text(
                     "Start Again Quiz",
                     style: Theme.of(context).textTheme.button?.copyWith(
@@ -112,8 +112,7 @@ class ScoreScreen extends StatelessWidget {
   }
 }
 
-_launchURL() async {
-  const url = 'https://kurukshetra.gov.in/';
+_launchURL(String url) async {
   if (await canLaunch(url)) {
     await launch(url, forceSafariVC: true, forceWebView: true);
   } else {
