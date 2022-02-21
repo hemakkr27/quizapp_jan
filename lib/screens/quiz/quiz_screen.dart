@@ -2,16 +2,19 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testing/controllers/question_controller.dart';
-import 'package:testing/model/QuestionModel.dart';
+//import 'package:testing/controllers/question_controller.dart';
+//import 'package:testing/model/QuestionModel.dart';
 //import 'package:testing/model/Questions.dart';
 
-import 'package:testing/screens/score/score_screen.dart';
+//import 'package:testing/screens/score/score_screen.dart';
 import 'package:video_player/video_player.dart';
 // import 'package:quiz_app/constants.dart';
 // import 'package:quiz_app/controllers/question_controller.dart';
 
 import '../../constants.dart';
+import '../../controllers/question_controller.dart';
+import '../../model/QuestionModel.dart';
+import '../score/score_screen.dart';
 import 'components/progress_bar.dart';
 
 import 'package:http/http.dart' as http;
@@ -63,6 +66,7 @@ class _BodyState extends State<QuestionBody> {
   Future<List<QuestinModel>> getdata() async {
     var response = await http.get(Uri.parse(
         'https://script.google.com/macros/s/AKfycbz_EM1r3Nh_XuzJigymZfhu0lyOIRDbxEfFM1tDI9bpHrgQ3ogz_x9KTRy300Uq95tekg/exec'));
+    print(response.body);
 
     if (response.statusCode == 200) {
       // If the call to the server was successful (returns OK), parse the JSON.
@@ -459,7 +463,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         children: [
           Column(
             children: [
-              FutureBuilder(
+              FutureBuilder<void>(
                 future: _initializeVideoPlayerFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {

@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:testing/controllers/question_controller.dart';
+//import 'package:testing/controllers/question_controller.dart';
 // import 'package:quiz_app/controllers/question_controller.dart';
 
 import '../../../constants.dart';
+import '../../../controllers/question_controller.dart';
 
 String callback = Icon(Icons.ac_unit) as String;
 

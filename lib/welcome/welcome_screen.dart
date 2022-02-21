@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:testing/screens/quiz/quiz_screen.dart';
+//import 'package:testing/screens/quiz/quiz_screen.dart';
 
 import '../../constants.dart';
+import '../screens/quiz/quiz_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   String id;

@@ -1,8 +1,10 @@
+//import 'package:QuizApp/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:testing/welcome/welcome_screen.dart';
+//import 'package:testing/welcome/welcome_screen.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'VideoPlayerApp .dart';
+import 'welcome/welcome_screen.dart';
 
 //import 'VideoPlayerApp .dart';
 

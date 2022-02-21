@@ -1,18 +1,20 @@
 //import 'dart:html';
 
+// ignore_for_file: unnecessary_brace_in_string_interps
+
+//import 'dart:html';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:testing/controllers/question_controller.dart';
+//import 'package:testing/controllers/question_controller.dart';
 // ignore: unused_import
-import 'package:testing/screens/quiz/quiz_screen.dart';
+//import 'package:testing/screens/quiz/quiz_screen.dart';
 //import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
-// import 'package:quiz_app/constants.dart';
-// import 'package:quiz_app/controllers/question_controller.dart';
-
-//String Backid = "https://kurukshetra.gov.in/brahmasarovar/";
 
 class ScoreScreen extends StatelessWidget {
   String id;
@@ -35,7 +37,7 @@ class ScoreScreen extends StatelessWidget {
           ),
           Column(
             children: [
-              Spacer(flex: 3),
+              const Spacer(flex: 3),
               Text(
                 "Score",
                 style: Theme.of(context)
@@ -45,8 +47,6 @@ class ScoreScreen extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                // "${_qnController.numOfCorrectAns}/${_qnController.questions.length}",
-                // "/${_questions.length.toString()}",
                 "${score}/${totalqueston}",
                 style: Theme.of(context)
                     .textTheme
@@ -54,35 +54,6 @@ class ScoreScreen extends StatelessWidget {
                     ?.copyWith(color: kSecondaryColor),
               ),
               const Spacer(), // 1/6
-              //Padding(
-              //   padding: const EdgeInsets.all(20.0),
-              //   child: InkWell(
-              //     onTap:
-              //         //_launchURLApp,
-              //         () {
-              //       Navigator.push(
-              //           context,
-              //           MaterialPageRoute(
-              //               builder: (context) => QuizScreen(id)));
-              //     },
-              //     child: Container(
-              //       width: double.infinity,
-              //       alignment: Alignment.center,
-              //       padding: const EdgeInsets.all(kDefaultPadding * 0.75), // 15
-              //       decoration: const BoxDecoration(
-              //         gradient: kPrimaryGradient,
-              //         borderRadius: BorderRadius.all(Radius.circular(12)),
-              //       ),
-              //       child: Text(
-              //         "Start Again Quiz",
-              //         style: Theme.of(context)
-              //             .textTheme
-              //             .button
-              //             ?.copyWith(color: Colors.black),
-              //       ),
-              //     ),
-              //   ),
-              // ),
 
               Container(
                 width: double.infinity,
@@ -94,14 +65,17 @@ class ScoreScreen extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 child: ElevatedButton(
-                  onPressed: _launchURL(backid),
-                  child: Text(
-                    "Start Again Quiz",
-                    style: Theme.of(context).textTheme.button?.copyWith(
-                          color: Colors.black,
-                        ),
-                  ),
-                ),
+                    child: Text(
+                      "Start Again Quiz",
+                      style: Theme.of(context).textTheme.button?.copyWith(
+                            color: Colors.black,
+                          ),
+                    ),
+                    onPressed: _launchURL(backid)
+                    // {
+                    //   SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                    // },
+                    ),
               ),
               Spacer(flex: 3),
             ],
@@ -110,15 +84,17 @@ class ScoreScreen extends StatelessWidget {
       ),
     );
   }
-}
 
-_launchURL(String url) async {
-  if (await canLaunch(url)) {
-    await launch(url, forceSafariVC: true, forceWebView: true);
-  } else {
-    throw 'Could not launch $url';
+  _launchURL(String url) async {
+    //window.close();
+    if (await canLaunch(url)) {
+      await launch(url, forceSafariVC: true, forceWebView: true);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
+
 
 
 
