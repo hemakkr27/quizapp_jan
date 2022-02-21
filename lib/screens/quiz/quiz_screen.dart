@@ -322,7 +322,7 @@ class _BodyState extends State<QuestionBody> {
     //_animationController!.stop();
     setState(() {});
     // Once user select an ans after 3s it will go to the next qn
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 4), () {
       _questionController.ResetPrograss();
 
       setState(() {
