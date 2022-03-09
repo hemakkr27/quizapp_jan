@@ -12,11 +12,11 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:4-66
-14-->E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:21-63
+14-->E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:3:4-66
+14-->E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:3:21-63
 15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-15-->E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:5:5-79
-15-->E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:5:22-76
+15-->E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:5-79
+15-->E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:22-76
 16
 17    <application
 18        android:name="android.app.Application"

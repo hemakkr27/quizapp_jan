@@ -26,7 +26,7 @@ class QuestinModel {
   });
 
   int qno;
-  String question;
+  dynamic question;
   String opt1;
   String opt2;
   String opt3;
@@ -34,7 +34,7 @@ class QuestinModel {
   String image;
   dynamic ltype;
   String ans;
-  String qtype;
+  dynamic qtype;
   String backid;
 
   factory QuestinModel.fromJson(Map<String, dynamic> json) => QuestinModel(

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:6:4-37:19
+INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:5:4-36:19
 MERGED from [:url_launcher_android] E:\change_App\testing\testing\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [:url_launcher_android] E:\change_App\testing\testing\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\1402869ddbbccf84f3a3a1b1d50ecac7\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
@@ -14,11 +14,11 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\AD
 	android:name
 		INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-38:12
-INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-38:12
-INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-38:12
-INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-38:12
-MERGED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-38:12
+ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-37:12
+INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-37:12
+INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-37:12
+INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-37:12
+MERGED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-37:12
 MERGED from [:url_launcher_android] E:\change_App\testing\testing\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:video_player_android] E:\change_App\testing\testing\build\video_player_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\510299f92f70280ff52696a64d9382c4\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
@@ -53,28 +53,28 @@ INJECTED from E:\change_App\testing\testing\android\app\src\debug\AndroidManifes
 		INJECTED from E:\change_App\testing\testing\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml
-		ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-38:12
+		ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-37:12
 		INJECTED from E:\change_App\testing\testing\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml
-		ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-38:12
+		ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:1-37:12
 		INJECTED from E:\change_App\testing\testing\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
-ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:4-66
-MERGED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:4-66
-MERGED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:4-66
+ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:3:4-66
+MERGED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:3:4-66
+MERGED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:3:4-66
 	android:name
-		ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:21-63
+		ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:3:21-63
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:5:5-79
+ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:5-79
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.14.1] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\386f14f5a3f7a4633f3356c50f39f4ff\jetified-exoplayer-core-2.14.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.exoplayer:exoplayer-core:2.14.1] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\386f14f5a3f7a4633f3356c50f39f4ff\jetified-exoplayer-core-2.14.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.exoplayer:exoplayer-common:2.14.1] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\b6c23148c1934165ee2b1876c799c11b\jetified-exoplayer-common-2.14.1\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.exoplayer:exoplayer-common:2.14.1] C:\Users\ADMIN\.gradle\caches\transforms-2\files-2.1\b6c23148c1934165ee2b1876c799c11b\jetified-exoplayer-common-2.14.1\AndroidManifest.xml:24:5-79
 	android:name
-		ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:5:22-76
+		ADDED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml:4:22-76
 uses-sdk
 INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\change_App\testing\testing\android\app\src\main\AndroidManifest.xml

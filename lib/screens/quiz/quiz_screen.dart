@@ -58,15 +58,14 @@ class _BodyState extends State<QuestionBody> {
   late List<QuestinModel> _questions;
 
   int index = 0;
-  int qoptionindex = 0;
-  int _correctAns = 0;
-  int _numcorrect = 0;
-  bool _answred = false;
+  int qoptionindex = 0; // click answer
+  int _correctAns = 0; // match 1 = 1
+  int _numcorrect = 0; // total corrt
+  bool _answred = false; // green and red
 
   Future<List<QuestinModel>> getdata() async {
     var response = await http.get(Uri.parse(
         'https://script.google.com/macros/s/AKfycbz_EM1r3Nh_XuzJigymZfhu0lyOIRDbxEfFM1tDI9bpHrgQ3ogz_x9KTRy300Uq95tekg/exec'));
-    print(response.body);
 
     if (response.statusCode == 200) {
       // If the call to the server was successful (returns OK), parse the JSON.
@@ -74,11 +73,12 @@ class _BodyState extends State<QuestionBody> {
       final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
 
       _questions = parsed
-          .map<QuestinModel>((json) => QuestinModel.fromJson(json))
+          .map<QuestinModel>((json) => QuestinModel.fromJson(json)) // all
           .toList();
       if (widget.id != "null") {
-        _questions =
-            _questions.where((element) => element.qtype == widget.id).toList();
+        _questions = _questions
+            .where((element) => element.qtype == widget.id)
+            .toList(); // id match
       }
       return _questions;
     } else {
