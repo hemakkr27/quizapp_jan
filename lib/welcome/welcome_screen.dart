@@ -7,7 +7,7 @@ import '../screens/quiz/quiz_screen.dart';
 class WelcomeScreen extends StatelessWidget {
   String id;
   WelcomeScreen(this.id);
-
+  TextEditingController _text = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,8 +55,9 @@ class WelcomeScreen extends StatelessWidget {
                         const SizedBox(
                           height: 30,
                         ),
-                        const TextField(
-                          decoration: InputDecoration(
+                        TextField(
+                          controller: _text,
+                          decoration: const InputDecoration(
                             filled: true,
                             fillColor: Color(0xFF1C2341),
                             hintText: "Full Name",
@@ -72,10 +73,12 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => QuizScreen(id)));
+                            _text.text.isNotEmpty
+                                ? Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => QuizScreen(id)))
+                                : 'Add Value';
                           },
                           child: Container(
                             width: double.infinity,
