@@ -28,6 +28,7 @@ class QuizScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        title: const Text("Home"),
         // Fluttter show the back button automatically
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -165,7 +166,12 @@ class _BodyState extends State<QuestionBody> {
                             MouseRegion(
                               cursor: SystemMouseCursors.click,
                               child: GestureDetector(
-                                child: const Icon(Icons.arrow_back_rounded),
+                                child: Column(
+                                  children: const [
+                                    Icon(Icons.arrow_back_rounded),
+                                    Text("Previous"),
+                                  ],
+                                ),
                                 onTap: () {
                                   setState(() {
                                     if (index != 0) {
@@ -179,7 +185,12 @@ class _BodyState extends State<QuestionBody> {
                             MouseRegion(
                               cursor: SystemMouseCursors.click,
                               child: GestureDetector(
-                                child: const Icon(Icons.arrow_forward_rounded),
+                                child: Column(
+                                  children: const [
+                                    Text("Next"),
+                                    Icon(Icons.arrow_forward_rounded),
+                                  ],
+                                ),
                                 onTap: () {
                                   changeQueston();
                                   _questionController.ResetPrograss();

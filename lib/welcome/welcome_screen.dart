@@ -55,31 +55,37 @@ class WelcomeScreen extends StatelessWidget {
                         const SizedBox(
                           height: 30,
                         ),
-                        TextField(
-                          controller: _text,
-                          decoration: const InputDecoration(
-                            filled: true,
-                            fillColor: Color(0xFF1C2341),
-                            hintText: "Full Name",
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(12)),
-                            ),
-                          ),
-                        ),
+                        // TextField(
+                        //   controller: _text,
+                        //   decoration: const InputDecoration(
+                        //     filled: true,
+                        //     fillColor: Color(0xFF1C2341),
+                        //     hintText: "Full Name",
+                        //     border: OutlineInputBorder(
+                        //       borderRadius:
+                        //           BorderRadius.all(Radius.circular(12)),
+                        //     ),
+                        //   ),
+                        // ),
                         // const Spacer(), // 1/6
                         const SizedBox(
                           height: 30,
                         ),
                         InkWell(
                           onTap: () {
-                            _text.text.isNotEmpty
-                                ? Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => QuizScreen(id)))
-                                : 'Add Value';
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => QuizScreen(id)));
                           },
+                          // onTap: () {
+                          //   _text.text.isNotEmpty
+                          //       ? Navigator.push(
+                          //           context,
+                          //           MaterialPageRoute(
+                          //               builder: (context) => QuizScreen(id)))
+                          //       : 'Add Value';
+                          // },
                           child: Container(
                             width: double.infinity,
                             alignment: Alignment.center,
@@ -91,7 +97,7 @@ class WelcomeScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(12)),
                             ),
                             child: Text(
-                              "Lets Start Quiz",
+                              "Lets Start",
                               style: Theme.of(context)
                                   .textTheme
                                   .button
